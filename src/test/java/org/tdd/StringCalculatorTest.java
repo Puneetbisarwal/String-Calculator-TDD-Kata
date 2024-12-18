@@ -38,4 +38,10 @@ class StringCalculatorTest {
     public void testBlankString() {
         assertEquals(0, stringCalculator.add(" "));
     }
+
+    @Test
+    @DisplayName("Display One Number")
+    public void testOneNumber() {
+        assertEquals(4, stringCalculator.add("4"));
+    }
 }
