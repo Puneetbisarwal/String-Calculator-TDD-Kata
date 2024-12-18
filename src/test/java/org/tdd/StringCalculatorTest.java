@@ -44,4 +44,10 @@ class StringCalculatorTest {
     public void testOneNumber() {
         assertEquals(4, stringCalculator.add("4"));
     }
+
+    @Test
+    @DisplayName("Add Two Numbers")
+    public void testTwoNumber() {
+        assertEquals(6, stringCalculator.add("1,5"));
+    }
 }
