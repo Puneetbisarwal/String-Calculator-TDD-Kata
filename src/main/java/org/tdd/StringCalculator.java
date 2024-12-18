@@ -11,18 +11,24 @@ public class StringCalculator {
             return 0;
         }
 
-        // eg: numbers: "-5"
         // Default Delimiter
         String delimiter = ",|\n";
-        String[] nums = numbers.split(delimiter); // eg: numbers: "-5"  delimiter: ",|\n"  nums: ["-5"]
+        String[] nums = numbers.split(delimiter);
         int sum = 0;
+        StringBuilder negatives = new StringBuilder();
 
-        for (String num : nums) {    // nums: ["-5"]   num: "-5"
-            int n = Integer.parseInt(num); // num: "-5"  n: -5
-            if (n < 0) {  // n: -5
-                throw new IllegalArgumentException("negative numbers not allowed " + n);
+        for (String num : nums) {
+            int n = Integer.parseInt(num);
+            if (n < 0) {
+                if (negatives.length() > 0)
+                    negatives.append(",");
+                negatives.append(n);
             }
             sum += n;
+        }
+
+        if (negatives.length() > 0) {
+            throw new IllegalArgumentException("negative numbers not allowed " + negatives);
         }
 
         return sum;
