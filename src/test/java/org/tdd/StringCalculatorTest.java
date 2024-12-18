@@ -77,4 +77,10 @@ class StringCalculatorTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("1,-2,3,-4,5,-6"));
         assertEquals("negative numbers not allowed -2,-4,-6", exception.getMessage());
     }
+
+    @Test
+    @DisplayName("Test with New Line between numbers.")
+    public void testNewLine() {
+        assertEquals(10, stringCalculator.add("1\n2,3\n4"));
+    }
 }
