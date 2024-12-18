@@ -105,4 +105,17 @@ class StringCalculatorTest {
         Exception exception3 = assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("//@\n-3@-7@-9"));
         assertEquals("negative numbers not allowed -3,-7,-9", exception3.getMessage());
     }
+
+    @Test
+    @DisplayName("Test with Custom Delimiter Positive Negative Numbers")
+    public void testCustomDelimiterPositiveNegativeNumbers() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("//;\n1;-2"));
+        assertEquals("negative numbers not allowed -2", exception.getMessage());
+        Exception exception1 = assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("//|\n-1|2|-3"));
+        assertEquals("negative numbers not allowed -1,-3", exception1.getMessage());
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("//$\n-1$-2$3$4"));
+        assertEquals("negative numbers not allowed -1,-2", exception2.getMessage());
+        Exception exception3 = assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("//@\n3@5@-7@-9"));
+        assertEquals("negative numbers not allowed -7,-9", exception3.getMessage());
+    }
 }
