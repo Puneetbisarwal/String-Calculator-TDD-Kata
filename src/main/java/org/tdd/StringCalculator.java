@@ -1,5 +1,7 @@
 package org.tdd;
 
+import java.util.regex.Pattern;
+
 public class StringCalculator {
 
     public int add(String numbers) {
@@ -13,7 +15,16 @@ public class StringCalculator {
 
         // Default Delimiter
         String delimiter = ",|\n";
-        String[] nums = numbers.split(delimiter);
+        String numberPart = numbers;
+
+        if (numbers.startsWith("//")) {
+            int delimiterEnd = numbers.indexOf("\n");
+            delimiter = numbers.substring(2, delimiterEnd);
+            numberPart = numbers.substring(delimiterEnd + 1);
+        }
+
+        String escapedDelimiter = "[" + delimiter + "]";
+        String[] nums = numberPart.split(escapedDelimiter);
         int sum = 0;
         StringBuilder negatives = new StringBuilder();
 

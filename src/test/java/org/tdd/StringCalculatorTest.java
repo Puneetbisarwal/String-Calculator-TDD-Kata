@@ -83,4 +83,13 @@ class StringCalculatorTest {
     public void testNewLine() {
         assertEquals(10, stringCalculator.add("1\n2,3\n4"));
     }
+
+    @Test
+    @DisplayName("Test with Custom Delimiter")
+    public void testCustomDelimiter() {
+        assertEquals(3, stringCalculator.add("//;\n1;2"));
+        assertEquals(6, stringCalculator.add("//|\n1|2|3"));
+        assertEquals(6, stringCalculator.add("//$\n1$2$3"));
+        assertEquals(8, stringCalculator.add("//@\n1@2@5"));
+    }
 }
