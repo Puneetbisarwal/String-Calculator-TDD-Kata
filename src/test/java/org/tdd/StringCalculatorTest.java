@@ -70,4 +70,11 @@ class StringCalculatorTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("-2,-6"));
         assertEquals("negative numbers not allowed -2,-6", exception.getMessage());
     }
+
+    @Test
+    @DisplayName("Test with Multiple Negative Numbers")
+    public void testMultipleNegativeNumbers() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> stringCalculator.add("1,-2,3,-4,5,-6"));
+        assertEquals("negative numbers not allowed -2,-4,-6", exception.getMessage());
+    }
 }
